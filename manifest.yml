@@ -1,0 +1,8 @@
+applications:
+  - name: test-graphql
+    random-route: true
+    buildpack: sdk-for-nodejs
+    memory: 256M
+    timeout: 120 # The maximum amount of time in seconds that is used to start the application. The default value is 60 seconds.
+    instances: 1
+    command: npm start

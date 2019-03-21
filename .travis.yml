@@ -1,0 +1,20 @@
+language: node_js
+sudo: required
+node_js: 11.11
+
+cache:
+  directories:
+    - node_modules
+
+script: echo "skipping tests"
+before_deploy:
+  - curl -L https://clis.ng.bluemix.net/download/bluemix-cli/0.6.1/linux64 | tar
+    -zx
+  - chmod -R u+x ./Bluemix_CLI/bin
+  - chmod +x ./deploy.sh
+deploy:
+  - provider: script
+    script: ./deploy.sh
+    skip_cleanup: true
+    on:
+      all_branches: true
